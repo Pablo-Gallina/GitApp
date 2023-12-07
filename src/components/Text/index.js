@@ -1,3 +1,3 @@
-import StyledText from "./StyledText";
+import StyledText from "./StyledText/StyledText";
 
 export default StyledText;
