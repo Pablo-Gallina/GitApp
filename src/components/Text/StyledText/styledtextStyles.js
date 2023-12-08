@@ -15,6 +15,9 @@ export default StyleSheet.create({
   primary: {
     color: theme.colors.primary,
   },
+  secondary: {
+    color: theme.colors.textSecondary,
+  },
   small: {
     fontSize: theme.fontSizes.small,
   },

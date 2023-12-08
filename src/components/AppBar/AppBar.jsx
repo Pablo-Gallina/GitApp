@@ -9,17 +9,17 @@ import {
 import { Link, useLocation } from "react-router-native";
 import appbarStyles from "./appbarStyles";
 import StyledText from "../Text";
+import ItemTab from "./ItemTab/ItemTab";
+import theme from "../../utils/theme";
 
 const AppBarTab = ({ children, to }) => {
   const { pathname } = useLocation();
   const active = pathname === to;
 
-  const style = [appbarStyles.text, active && appbarStyles.active];
+  
   return (
     <Link to={to} component={TouchableWithoutFeedback}>
-      <StyledText active={active} style={style}>
-        {children}
-      </StyledText>
+      <ItemTab active={active}>{children}</ItemTab>
     </Link>
   );
 };
@@ -27,15 +27,23 @@ const AppBarTab = ({ children, to }) => {
 const AppBar = () => {
   return (
     <View style={appbarStyles.container}>
-      <View>
+      <View style={appbarStyles.header}>
         <Image
           source={require("../../assets/icons/git.png")}
           style={appbarStyles.image}
         />
+        <View>
+          <StyledText fontSize="small" secondary>
+            Pablo-Gallina
+          </StyledText>
+          <StyledText fontWeight="bold">
+            Pull Requests
+          </StyledText>
+        </View>
       </View>
       <ScrollView horizontal style={appbarStyles.scroll}>
-        <AppBarTab to="/">Repositories</AppBarTab>
-        <AppBarTab to="/signin">Sign In</AppBarTab>
+        <AppBarTab to="/">Open</AppBarTab>
+        <AppBarTab to="/signin">Closed</AppBarTab>
       </ScrollView>
     </View>
   );

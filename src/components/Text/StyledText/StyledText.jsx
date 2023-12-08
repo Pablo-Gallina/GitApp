@@ -10,6 +10,7 @@ const StyledText = ({
   style,
   children,
   active,
+  secondary,
   ...rest
 }) => {
   const textStyle = [
@@ -20,6 +21,7 @@ const StyledText = ({
     fontSize === "small" && styles.small,
     fontSize === "subheading" && styles.subheading,
     fontSize === "heading" && styles.heading,
+    secondary && styles.secondary,
     style,
   ];
 
