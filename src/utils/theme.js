@@ -23,6 +23,12 @@ const theme = {
     normal: "400",
     bold: "700",
   },
+  spacing: {
+    small: 8,
+    medium: 16,
+    large: 24,
+    xlarge: 32,
+  },
 };
 
 export default theme;
