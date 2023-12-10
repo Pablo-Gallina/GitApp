@@ -10,7 +10,6 @@ import { Link, useLocation } from "react-router-native";
 import appbarStyles from "./appbarStyles";
 import StyledText from "../Text";
 import ItemTab from "./ItemTab/ItemTab";
-import theme from "../../utils/theme";
 
 const AppBarTab = ({ children, to }) => {
   const { pathname } = useLocation();
@@ -43,7 +42,7 @@ const AppBar = () => {
       </View>
       <ScrollView horizontal style={appbarStyles.scroll}>
         <AppBarTab to="/">Open</AppBarTab>
-        <AppBarTab to="/signin">Closed</AppBarTab>
+        <AppBarTab to="/closed">Closed</AppBarTab>
       </ScrollView>
     </View>
   );

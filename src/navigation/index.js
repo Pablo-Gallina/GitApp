@@ -6,7 +6,7 @@ export const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<OpenScreen />} />
-      <Route path="/signin" element={<Text>Sign In</Text>} />
+      <Route path="/closed" element={<Text>Sign In</Text>} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

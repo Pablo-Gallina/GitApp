@@ -4,13 +4,17 @@ import { Image, View } from "react-native";
 import styles from "./listitemStyles";
 import StyledText from "../Text";
 
+const BranchWhite = require("../../assets/icons/branch-white.png");
+const BranchGreen = require("../../assets/icons/branch-green.png");
+const BranchRed = require("../../assets/icons/branch-red.png");
+
 const ListItem = () => {
   return (
     <View style={styles.container}>
       <View style={styles.cardName}>
         <View style={styles.descriptionContainer}>
           <Image
-            source={require("../../assets/icons/branch-white.png")}
+            source={BranchWhite}
             style={styles.image}
           />
           <StyledText fontWeight="bold" numberOfLines={2}>
