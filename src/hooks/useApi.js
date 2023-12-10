@@ -1,28 +1,24 @@
-import { useState, useEffect } from "react";
+import { useQuery } from "react-query";
 import axios from "axios";
+import { Config } from "../services/config";
 
 const useApi = (url, method = "get") => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const fullUrl = `${Config.githubApiUrl}${url}`;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const response = await axios({ method, url });
+  const fetchData = async () => {
+    const response = await axios({
+      method,
+      url: fullUrl,
+      headers: { Authorization: `Bearer ${Config.githubAccessToken}` },
+    });
 
-        setData(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    return response.data;
+  };
 
-    fetchData();
-  }, [url, method]);
-
-  return { data, loading };
+  return useQuery([url, method], fetchData, {
+    // Configuraciones adicionales según tus necesidades
+    refetchOnWindowFocus: false, // Por ejemplo, evitar recargar automáticamente en foco de ventana
+  });
 };
 
 export default useApi;

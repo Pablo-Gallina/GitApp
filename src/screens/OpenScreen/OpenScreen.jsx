@@ -3,6 +3,9 @@ import { StyleSheet, View } from "react-native";
 import theme from "../../utils/theme";
 import EmptyData from "../../components/EmptyData/EmptyData";
 import DataList from "../../components/Lists/DataList";
+import useApi from "../../hooks/useApi";
+import useGenerateQueryUrl from "../../hooks/useGenerateQueryUrl";
+import Loader from "../../components/Loader";
 
 const style = StyleSheet.create({
   container: {
@@ -12,10 +15,13 @@ const style = StyleSheet.create({
 });
 
 const OpenScreen = () => {
-  const prs = [{key: 'a'}, {key: 'b'},{key: 'c'},{key: 'd'}, {key: 'e'},{key: 'f'},{key: 'g'}, {key: 'h'},{key: 'i'},{key: 'j'}, {key: 'k'}, {key: 'l'},{key: 'm'},{key: 'n'}];
+  const url = useGenerateQueryUrl("/search/issues", { author: "PabloGallinaG" });
+
+  const { data, isLoading } = useApi(url);
+  console.log(data);
   return (
     <View style={style.container}>
-      {prs ? <DataList data={prs} /> : <EmptyData />}
+      {isLoading ? <Loader /> : data ? <DataList data={data} /> : <EmptyData />}
     </View>
   );
 };
