@@ -16,8 +16,7 @@ const useApi = (url, method = "get") => {
   };
 
   return useQuery([url, method], fetchData, {
-    // Configuraciones adicionales según tus necesidades
-    refetchOnWindowFocus: false, // Por ejemplo, evitar recargar automáticamente en foco de ventana
+    refetchOnWindowFocus: false,
   });
 };
 

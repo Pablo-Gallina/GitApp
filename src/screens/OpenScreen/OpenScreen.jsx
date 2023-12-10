@@ -15,13 +15,14 @@ const style = StyleSheet.create({
 });
 
 const OpenScreen = () => {
-  const url = useGenerateQueryUrl("/search/issues", { author: "PabloGallinaG" });
-
+  const url = useGenerateQueryUrl("/search/issues", { author: "PabloGallinaG", state: "open" });
   const { data, isLoading } = useApi(url);
-  console.log(data);
+  const { items = [] } = data || {};
+  const isEmpty = items?.length === 0;
+
   return (
     <View style={style.container}>
-      {isLoading ? <Loader /> : data ? <DataList data={data} /> : <EmptyData />}
+      {isLoading ? <Loader /> : !isEmpty ? <DataList data={items} /> : <EmptyData />}
     </View>
   );
 };

@@ -3,39 +3,48 @@ import { Image, View } from "react-native";
 
 import styles from "./listitemStyles";
 import StyledText from "../Text";
+import { extractDataPR } from "../../utils/extractDataPR";
+import { EstadosPR } from "../../utils/constants";
+const { ABIERTO } = EstadosPR;
 
 const BranchWhite = require("../../assets/icons/branch-white.png");
 const BranchGreen = require("../../assets/icons/branch-green.png");
 const BranchRed = require("../../assets/icons/branch-red.png");
 
-const ListItem = () => {
+const ListItem = (props) => {
+  const { title, author, state, repositoryName, acepted, description } =
+    extractDataPR(props);
+
+  const image = acepted
+    ? BranchGreen
+    : state === ABIERTO
+    ? BranchWhite
+    : BranchRed;
+
   return (
     <View style={styles.container}>
       <View style={styles.cardName}>
         <View style={styles.descriptionContainer}>
-          <Image
-            source={BranchWhite}
-            style={styles.image}
-          />
+          <Image source={image} style={styles.image} />
           <StyledText fontWeight="bold" numberOfLines={2}>
-            {"\t\t\t"}1000 Nombre de la pr asdfasdfasdf asdfasdfasdf
-            asdfasdfasdf
+            {"\t\t\t"}
+            {title}
           </StyledText>
         </View>
         <StyledText fontSize="small" secondary numberOfLines={1}>
-          Hace 2 dias by pablo gallina
+          {description}
         </StyledText>
       </View>
 
       <View style={styles.cardSystem}>
         <StyledText secondary numberOfLines={2}>
-          Sistema o repo
+          {repositoryName}
         </StyledText>
       </View>
 
       <View style={styles.cardStatus}>
         <StyledText fontWeight="bold" numberOfLines={1}>
-          Abierto
+          {state.toUpperCase()}
         </StyledText>
       </View>
     </View>
