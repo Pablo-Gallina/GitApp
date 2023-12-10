@@ -13,8 +13,8 @@ const style = StyleSheet.create({
   },
 });
 
-const OpenScreen = () => {
-  const { items, isLoading, isEmpty } = useListPRS({ state: "open" });
+const ClosedScreen = () => {
+  const { items, isLoading, isEmpty } = useListPRS({ state: "closed" });
 
   return (
     <View style={style.container}>
@@ -23,4 +23,4 @@ const OpenScreen = () => {
   );
 };
 
-export default OpenScreen;
+export default ClosedScreen;
