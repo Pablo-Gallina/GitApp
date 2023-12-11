@@ -1,5 +1,5 @@
 @access_token = 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
-@access_token2 = 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
+@access_token2 = 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
 ### GET PULL REQUEST BY REPO
 GET https://api.github.com/repos/Pablo-Gallina/Celectric-web/pulls?state=all&creator=Pablo-Gallina
 Authorization: Bearer {{access_token}}

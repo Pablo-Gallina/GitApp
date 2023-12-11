@@ -1,4 +1,4 @@
 export const Config = {
-    githubAccessToken: "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",
+    githubAccessToken: "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",
     githubApiUrl: "https://api.github.com",
 }
